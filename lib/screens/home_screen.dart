@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:webtoon_app/screens/favorites_screen.dart';
 import '../providers/webtoon_provider.dart';
@@ -12,7 +13,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Fantasy Manhwa'),
+        title: Text(
+          'Fantasy Manhwa',
+          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),

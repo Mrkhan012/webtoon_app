@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../models/webtoon.dart';
 import '../providers/webtoon_provider.dart';
 
@@ -28,7 +30,22 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.webtoon.title),
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: const Color.fromARGB(255, 5, 32, 80),
+        title: Text(widget.webtoon.title,
+            style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 16.sp,
+                color: Colors.white)),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.share),
+            onPressed: () {
+              // Share the webtoon title
+              Share.share(widget.webtoon.title);
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -36,11 +53,15 @@ class _DetailScreenState extends State<DetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(widget.webtoon.imageUrl, height: 300),
+              Center(
+                  child: Image.network(widget.webtoon.imageUrl, height: 300.h)),
               const SizedBox(height: 10),
               Text(
                 widget.webtoon.description,
-                style: const TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.sp,
+                ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -75,6 +96,7 @@ class _DetailScreenState extends State<DetailScreen> {
               icon: Icon(
                 index < currentRating ? Icons.star : Icons.star_border,
                 color: Colors.yellow,
+                size: 30,
               ),
               onPressed: () {
                 _updateRating(context, index + 1); // Pass the rating as 1-based

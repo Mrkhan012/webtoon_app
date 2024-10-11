@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
+import 'package:webtoon_app/screens/splash_screen.dart';
 import 'providers/webtoon_provider.dart';
 import 'screens/home_screen.dart';
 
@@ -25,12 +26,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: 'Avenir',
-            textTheme: const TextTheme(
-
-                // Customize your text theme here
-                ),
+            textTheme: const TextTheme(),
           ),
-          home: const HomeScreen(),
+          home: const SplashScreen(),
         );
       },
     );
